@@ -44,4 +44,12 @@ jobs:
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+      env:
+        TF_VAR_table_name: ${{ secrets.table_name }}
+        TF_VAR_hash_key: ${{ secrets.hash_key }}
+        TF_VAR_function_name: ${{ secrets.function_name }}
+        TF_VAR_api_name: ${{ secrets.api_name }}
+        TF_VAR_stage_name: ${{ secrets.stage_name }}
+        TF_VAR_myregion: ${{ secrets.myregion }}
+        TF_VAR_accountId: ${{ secrets.accountId }}
       run: terraform apply -auto-approve -no-color
