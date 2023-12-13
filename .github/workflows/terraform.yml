@@ -30,6 +30,14 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
+      env:
+        TF_VAR_table_name: ${{ secrets.table_name }}
+        TF_VAR_hash_key: ${{ secrets.hash_key }}
+        TF_VAR_function_name: ${{ secrets.function_name }}
+        TF_VAR_api_name: ${{ secrets.api_name }}
+        TF_VAR_stage_name: ${{ secrets.stage_name }}
+        TF_VAR_myregion: ${{ secrets.myregion }}
+        TF_VAR_accountId: ${{ secrets.accountId }}
       run: terraform plan -no-color
 
       # On push to "master", build or change infrastructure according to Terraform configuration files
