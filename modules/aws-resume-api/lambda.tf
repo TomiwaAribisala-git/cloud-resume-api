@@ -26,7 +26,7 @@ resource "aws_lambda_function" "resumeapi_function" {
   function_name = var.function_name
   filename      = "${path.module}/lambda.zip"
   role          = aws_iam_role.iam_for_lambda.arn
-  handler       = "index.test"
+  handler       = "lambda.lambda_handler"
   source_code_hash = filebase64sha256("${path.module}/lambda.zip") 
   runtime = "python3.9"
 }

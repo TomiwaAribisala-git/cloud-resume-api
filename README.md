@@ -4,7 +4,7 @@ This repository is a solution of the [AWS Resume API Challenge](https://github.c
 ## Services Used
 - DynamoDB Table: Stores the resume in json format, not DynamoDB JSON format
 - API Gateway + Lambda Function: Fetches and displays the resume data in json format from the DynamoDB Table
-- API URL: 
+- API URL: https://3s4jbj9wkg.execute-api.eu-north-1.amazonaws.com/resumeApi/resume_data
 - Github Actions: Workflow to run Terraform when triggered
 ## Extras 
 - [Terraform Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)
