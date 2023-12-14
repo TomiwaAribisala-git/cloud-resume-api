@@ -14,88 +14,38 @@ resource "aws_dynamodb_table" "resume_table" {
 resource "aws_dynamodb_table_item" "tomiwa_aribisala_resume" {
   table_name = aws_dynamodb_table.resume_table.name
   hash_key   = aws_dynamodb_table.resume_table.hash_key
-  item = <<ITEM
-{
- "resume_data": {
-  "S": "tomiwa_aribisala_resume"
- },
- "basics": {
-  "M": {
-   "location": {
-    "M": {
-     "address": {
-      "S": "Henry Ojoghor Crescent"
-     },
-     "city": {
-      "S": "Lagos"
-     },
-     "countryCode": {
-      "S": "NG"
-     },
-     "postalCode": {
-      "S": "102574"
-     },
-     "region": {
-      "S": "Lekki"
-     }
+  item = jsonencode({
+    {
+    "resume_data": "tomiwa_aribisala_resume",
+    "basics": {
+      "location": {
+      "address": "Henry Ojoghor Crescent",
+      "city": "Lagos",
+      "countryCode": "NG",
+      "postalCode": "102574",
+      "region": "Lekki"
+      },
+      "name": "Tomiwa Aribisala",
+      "phone": "+2349037402028",
+      "summary": "A summary of Tomiwa Aribisala Resume",
+      "url": "https://github.com/TomiwaAribisala-git"
+    },
+    "projects": {
+      "description": "Cloud Native Microservice Helm Charts",
+      "endDate": "2023-12-20",
+      "name": "Helm Charts",
+      "startDate": "2023-12-01",
+      "url": "https://github.com/TomiwaAribisala-git/microservices_helm_charts"
+    },
+    "skills": {
+      "keywords": [
+      "Golang",
+      "Kernel",
+      "Distributed Systems"
+      ],
+      "label": "Site Reliability Engineer",
+      "level": "Intermediate"
     }
-   },
-   "name": {
-    "S": "Tomiwa Aribisala"
-   },
-   "phone": {
-    "S": "+2349037402028"
-   },
-   "summary": {
-    "S": "A summary of Tomiwa Aribisala Resume"
-   },
-   "url": {
-    "S": "https://github.com/TomiwaAribisala-git"
-   }
   }
- },
- "projects": {
-  "M": {
-   "description": {
-    "S": "Cloud Native Microservice Helm Charts"
-   },
-   "endDate": {
-    "S": "2023-12-20"
-   },
-   "name": {
-    "S": "Helm Charts"
-   },
-   "startDate": {
-    "S": "2023-12-01"
-   },
-   "url": {
-    "S": "https://github.com/TomiwaAribisala-git/microservices_helm_charts"
-   }
-  }
- },
- "skills": {
-  "M": {
-   "keywords": {
-    "L": [
-     {
-      "S": "Golang"
-     },
-     {
-      "S": "Kernel"
-     },
-     {
-      "S": "Distributed Systems"
-     }
-    ]
-   },
-   "label": {
-    "S": "Site Reliability Engineer"
-   },
-   "level": {
-    "S": "Intermediate"
-   }
-  }
- }
-}
-ITEM
+})
 }
